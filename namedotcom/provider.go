@@ -22,7 +22,7 @@ func Provider() *schema.Provider {
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"name_record": resourceRecord(),
+			"namedotcom_record": resourceRecord(),
 		},
 	}
 }
