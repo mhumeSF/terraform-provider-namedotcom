@@ -7,19 +7,18 @@ import (
 
 func Provider() *schema.Provider {
 	return &schema.Provider{
-		ResourcesMap: map[string]*schema.Resource{},
 		Schema: map[string]*schema.Schema{
-			"api_token": {
+			"token": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("API_TOKEN", nil),
-				Description: "API Token",
+				DefaultFunc: schema.EnvDefaultFunc("TOKEN", nil),
+				Description: "Name.com API Token Value",
 			},
-			"api_username": {
+			"username": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("API_USERNAME", nil),
-				Description: "API Username",
+				DefaultFunc: schema.EnvDefaultFunc("USERNAME", nil),
+				Description: "Name.com API Username",
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
@@ -29,8 +28,8 @@ func Provider() *schema.Provider {
 }
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
-	username := d.Get("api_username").(string)
-	token := d.Get("api_token").(string)
+	username := d.Get("username").(string)
+	token := d.Get("token").(string)
 	nc := namecom.New(username, token)
 	return nc, nil
 }

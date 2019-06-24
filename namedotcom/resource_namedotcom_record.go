@@ -7,9 +7,9 @@ import (
 func resourceRecord() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceRecordCreate,
-		// Read:   resourceRecordRead,
-		// Update: resourceRecordUpdate,
-		// Delete: resourceRecordDelete,
+		Read:   resourceRecordRead,
+		Update: resourceRecordUpdate,
+		Delete: resourceRecordDelete,
 
 		Schema: map[string]*schema.Schema{
 			"id": &schema.Schema{
@@ -61,17 +61,17 @@ func resourceRecordCreate(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
 
-// func resourceRecordRead(d *schema.ResourceData, m interface{}) error {
-// 	// readRecord
-// 	return nil
-// }
-//
-// func resourceRecordUpdate(d *schema.ResourceData, m interface{}) error {
-// 	// updateRecord
-// 	return nil
-// }
-//
-// func resourceRecordDelete(d *schema.ResourceData, m interface{}) error {
-// 	// deleteRecord
-// 	return nil
-// }
+func resourceRecordRead(d *schema.ResourceData, m interface{}) error {
+	// readRecord
+	return nil
+}
+
+func resourceRecordUpdate(d *schema.ResourceData, m interface{}) error {
+	// updateRecord
+	return nil
+}
+
+func resourceRecordDelete(d *schema.ResourceData, m interface{}) error {
+	// deleteRecord
+	return nil
+}
