@@ -11,19 +11,26 @@ func Provider() terraform.ResourceProvider {
 		Schema: map[string]*schema.Schema{
 			"token": {
 				Type:        schema.TypeString,
-				Optional:    true,
+				Required:    true,
 				DefaultFunc: schema.EnvDefaultFunc("TOKEN", nil),
 				Description: "Name.com API Token Value",
 			},
 			"username": {
 				Type:        schema.TypeString,
-				Optional:    true,
+				Required:    true,
 				DefaultFunc: schema.EnvDefaultFunc("USERNAME", nil),
 				Description: "Name.com API Username",
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"namedotcom_record": resourceRecord(),
+			"namedotcom_record":             resourceRecord(),
+			"namedotcom_domain":             resourceDomain(),
+			"namedotcom_domain_nameservers": resourceDomain(),
+			// "namedotcom_dnssec":            resourceDnssec(),
+			// "namedotcom_email_forwarding":  resourceEmailForwarding(),
+			// "namedotcom_transfer":          resourceTransfer(),
+			// "namedotcom_url_forwarding":    resourceUrlForwarding(),
+			// "namedotcom_vanity_nameserver": resourceVanityNameserver(),
 		},
 		ConfigureFunc: providerConfigure,
 	}
