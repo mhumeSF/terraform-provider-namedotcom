@@ -27,6 +27,10 @@ func Provider() *schema.Provider {
 	}
 }
 
+type NameDotComClient struct {
+	conn *namecom.NameCom
+}
+
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	username := d.Get("username").(string)
 	token := d.Get("token").(string)
