@@ -50,16 +50,37 @@ func resourceRecordCreate(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceRecordRead(d *schema.ResourceData, m interface{}) error {
-	// readRecord
+	client := m.(*namecom.NameCom)
+	record := &namecom.Record{
+		DomainName: d.Get("domain_name").(string),
+		Host:       d.Get("host").(string),
+		Type:       d.Get("record_type").(string),
+		Answer:     d.Get("answer").(string),
+	}
+	client.GetRecord(record)
 	return nil
 }
 
 func resourceRecordUpdate(d *schema.ResourceData, m interface{}) error {
-	// updateRecord
+	client := m.(*namecom.NameCom)
+	record := &namecom.Record{
+		DomainName: d.Get("domain_name").(string),
+		Host:       d.Get("host").(string),
+		Type:       d.Get("record_type").(string),
+		Answer:     d.Get("answer").(string),
+	}
+	client.UpdateRecord(record)
 	return nil
 }
 
 func resourceRecordDelete(d *schema.ResourceData, m interface{}) error {
-	// deleteRecord
+	client := m.(*namecom.NameCom)
+	record := &namecom.Record{
+		DomainName: d.Get("domain_name").(string),
+		Host:       d.Get("host").(string),
+		Type:       d.Get("record_type").(string),
+		Answer:     d.Get("answer").(string),
+	}
+	client.DeleteRecord(record)
 	return nil
 }
