@@ -38,7 +38,6 @@ func resourceRecord() *schema.Resource {
 }
 
 func resourceRecordCreate(d *schema.ResourceData, m interface{}) error {
-	// createRecord
 	client := m.(*namecom.NameCom)
 	record := &namecom.Record{
 		DomainName: d.Get("domain_name").(string),

@@ -2,10 +2,11 @@ package namedotcom
 
 import (
 	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform/terraform"
 	"github.com/namedotcom/go/namecom"
 )
 
-func Provider() *schema.Provider {
+func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
 		Schema: map[string]*schema.Schema{
 			"token": {
@@ -24,6 +25,7 @@ func Provider() *schema.Provider {
 		ResourcesMap: map[string]*schema.Resource{
 			"namedotcom_record": resourceRecord(),
 		},
+		ConfigureFunc: providerConfigure,
 	}
 }
 
