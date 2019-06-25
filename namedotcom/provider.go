@@ -28,8 +28,6 @@ func Provider() *schema.Provider {
 }
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
-	username := d.Get("username").(string)
-	token := d.Get("token").(string)
-	nc := namecom.New(username, token)
+	nc := namecom.New(d.Get("username").(string), d.Get("token").(string))
 	return nc, nil
 }
