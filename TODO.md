@@ -13,3 +13,5 @@
     - "namedotcom_transfer":
     - "namedotcom_url_forwarding":
     - "namedotcom_vanity_nameserver":
+- CI to handle release and publish tar files of providers
+
